@@ -1,1 +1,36 @@
     <div id="particles-js"></div>
+                <ul>
+                    <li><a href="#" id="about-link" class="focused nav-link" onclick="showHide('about', this.id)">About</a></li>
+                    <li><a href="#" id="project-link" class="unfocused nav-link" onclick="showHide('projects', this.id)">Projects</a></li>
+                    <li><a href="#" id="education-link" class="unfocused nav-link" onclick="showHide('education', this.id)">Education</a></li>
+                    <li><a href="#" id="experience-link" class="unfocused nav-link" onclick="showHide('experience', this.id)">Experience</a></li>
+                </ul>
+                <div id="projects" class="hidden">
+                    <p>Projects</p>
+                </div>
+
+                <div id="education" class="hidden">
+                    <p>Education</p>
+                </div>
+
+                <div id="experience" class="hidden">
+                    <p>Experience</p>
+                </div>
+
+                <div id="contact-me" class="hidden">
+                    <h2>Write Me A Message</h2>
+                    <form action="" id="contact-form">
+
+                        <label for="email-address">Email Address</label>
+                        <input type="email" id="email-address" name="email-address" placeholder="Email Address" />
+    
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" />
+    
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Message"></textarea>
+
+                        <button class="btn" type="button"  onclick="sendEmail()">Submit</button>
+                    </form>
+
+                </div>
