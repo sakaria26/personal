@@ -40,3 +40,33 @@ const showContactMe = () => {
     let button = document.getElementById("btn-text");
     button.innerHTML = "Back";
 };
+
+//emailjs function
+const sendEmail = () => {
+    let email = document.getElementById("email-address").value;
+    let subject = document.getElementById("subject").value;
+    let message = document.getElementById("message").value;
+
+    window.onload = function () {
+        document.getElementById("contact-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            emailjs.init(KoisirjdUap4tMQHh);
+
+            if (subject === "" || email === "" || message === "") {
+                alert("Please fill in all fields");
+            } else {
+                emailjs.sendForm("contact_service", "contact_form", "#contact-form").then(
+                    function (response) {
+                        alert("Your message has been sent!");
+                        document.getElementById("contact-form").reset();
+                    },
+                    function (error) {
+                        alert(
+                            "There was an error sending your message. Please try again later."
+                        );
+                    }
+                );
+            }
+        })
+    }
+};
