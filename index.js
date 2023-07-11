@@ -42,31 +42,23 @@ const showContactMe = () => {
 };
 
 //emailjs function
-const sendEmail = () => {
-    let email = document.getElementById("email-address").value;
-    let subject = document.getElementById("subject").value;
-    let message = document.getElementById("message").value;
 
-    window.onload = function () {
-        document.getElementById("contact-form").addEventListener("submit", function (event) {
-            event.preventDefault();
-            emailjs.init(KoisirjdUap4tMQHh);
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-            if (subject === "" || email === "" || message === "") {
-                alert("Please fill in all fields");
-            } else {
-                emailjs.sendForm("contact_service", "contact_form", "#contact-form").then(
-                    function (response) {
-                        alert("Your message has been sent!");
-                        document.getElementById("contact-form").reset();
-                    },
-                    function (error) {
-                        alert(
-                            "There was an error sending your message. Please try again later."
-                        );
-                    }
-                );
-            }
-        })
-    }
-};
+    const serviceID = "service_djb92iq";
+    const templateID = "template_e999vhz";
+
+    emailjs.init("KoisirjdUap4tMQHh")
+
+    emailjs.sendForm(serviceID, templateID, this).then(
+        (response) => {
+            changeVisibility("success-message");
+        },
+        (error) => {
+            console.log("FAILED...", error);
+            alert("Your message was not sent. Please try again.");
+        }
+    );
+});
+
